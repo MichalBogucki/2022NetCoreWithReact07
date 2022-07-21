@@ -3,6 +3,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+.DS_Store
+
+
 # User-specific files
 *.rsuser
 *.suo
@@ -33,8 +36,12 @@ bld/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
+.idea/
 # Uncomment if you have tasks that create the project's static files in wwwroot
-#wwwroot/
+wwwroot/
+api/wwwroot/**
+!api/wwwroot/scratch.html
+!api/wwwroot/favicon.ico
 
 # Visual Studio 2017 auto generated files
 Generated\ Files/
@@ -71,6 +78,8 @@ StyleCopReport.xml
 *.ilk
 *.meta
 *.obj
+bin/
+obj/
 *.iobj
 *.pch
 *.pdb
@@ -184,6 +193,7 @@ PublishScripts/
 
 # NuGet Packages
 *.nupkg
+NuGetScratch/
 # NuGet Symbol Packages
 *.snupkg
 # The packages folder can be ignored because of Package Restore
@@ -274,6 +284,13 @@ FakesAssemblies/
 # Node.js Tools for Visual Studio
 .ntvs_analysis.dat
 node_modules/
+typings/
+npm-debug.log
+
+# client-react
+client-react/components/*.js
+client-react.test/build
+!client-react.test/build/client-react/styles/
 
 # Visual Studio 6 build log
 *.plg
@@ -348,3 +365,11 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# ops
+ops/hosts
+ops/config.yml
+ops/*.retry
+
+# other
+*.js.map
