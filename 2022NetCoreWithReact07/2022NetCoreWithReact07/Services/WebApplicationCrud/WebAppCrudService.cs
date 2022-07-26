@@ -7,7 +7,7 @@ namespace _2022NetCoreWithReact07.Services.WebApplicationCrud
 {
     public interface IWebApplicationCrudService
     {
-        public Task<List<ClientExecution>> GetAllClients();
+        public Task<List<Client>> GetAllClients();
         public Task<List<ClientExecution>> InitializeClients();
         public Task<ClientExecution> UpdateClientName(Client client);
         public Task<List<ClientExecution>> CreateClientTwins(Client client);
@@ -24,9 +24,12 @@ namespace _2022NetCoreWithReact07.Services.WebApplicationCrud
             _httpClient.BaseAddress = new Uri(_webAppCrudApiBaseUrl);
         }
 
-        public async Task<List<ClientExecution>> GetAllClients()
+        public async Task<List<Client>> GetAllClients()
         {
-            throw new NotImplementedException();
+            var requestUri = $"api/Client";
+            var clients = await GetAsync<Client>(requestUri); 
+
+            return clients!;
         }
 
         public async Task<List<ClientExecution>> InitializeClients()
@@ -59,6 +62,14 @@ namespace _2022NetCoreWithReact07.Services.WebApplicationCrud
             }
 
             return createdTwins;
+        }
+
+        private async Task<List<T>?> GetAsync<T>(string requestUri)
+        {
+            var responseMessage = await _httpClient.GetAsync(requestUri);
+            var resultAsJson = await responseMessage.Content.ReadAsStringAsync();
+            var createdTwin = JsonConvert.DeserializeObject<List<T>>(resultAsJson);
+            return createdTwin;
         }
 
         private async Task<T?> PutAsync<T>(T twin, string requestUri)

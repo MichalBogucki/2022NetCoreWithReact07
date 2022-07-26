@@ -22,9 +22,11 @@ namespace _2022NetCoreWithReact07.Controllers
         [HttpGet]
         public async Task<object> Get()
         {
-            var strings = GetStrings();
-            var results = await PerformAsync<List<string>>(strings);
-            return StatusCode(200, results);
+            //var strings = GetStrings();
+            //var results = await PerformAsync<List<string>>(strings);
+            //return StatusCode(200, results);
+            var result = await _wepAppCrudService.GetAllClients();
+            return StatusCode((int)HttpStatusCode.OK, result);
         }
 
         // GET api/<ApiActions>/5
