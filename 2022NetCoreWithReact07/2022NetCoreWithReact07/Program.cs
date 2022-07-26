@@ -1,6 +1,7 @@
 
 using Microsoft.OpenApi.Models;
 using _2022NetCoreWithReact07.Controllers;
+using _2022NetCoreWithReact07.Services.WebApplicationCrud;
 
 namespace _2022NetCoreWithReact07
 {
@@ -8,11 +9,11 @@ namespace _2022NetCoreWithReact07
     {
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
+            var builder = WebApplication.CreateBuilder(args);      
 
             // Add services to the container.
-
             builder.Services.AddControllersWithViews();
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(
@@ -22,8 +23,8 @@ namespace _2022NetCoreWithReact07
             //
             //    }
             );
+            builder.Services.AddHttpClient<IWebApplicationCrudService, WebAppCrudService>();
 
-            builder.Services.AddHttpClient();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
