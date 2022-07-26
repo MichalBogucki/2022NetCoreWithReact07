@@ -1,4 +1,4 @@
-namespace _2022NetCoreWithReact07
+namespace _2022NetCoreWithReact07.DTOs
 {
     public class WeatherForecast
     {

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using _2022NetCoreWithReact07.DTOs;
+using Microsoft.AspNetCore.Mvc;
 
 namespace _2022NetCoreWithReact07.Controllers
 {
