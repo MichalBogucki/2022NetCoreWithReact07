@@ -10,6 +10,10 @@ export class UseClients extends Component {
 
     componentDidMount() {
         this.getClients();
+
+    }
+    componentDidUpdate() {
+        this.getClients();
     }
 
     static renderClientsTable(clients) {
