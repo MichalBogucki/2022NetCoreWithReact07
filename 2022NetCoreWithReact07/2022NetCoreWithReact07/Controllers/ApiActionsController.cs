@@ -9,11 +9,11 @@ namespace _2022NetCoreWithReact07.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ApiActions : ControllerBase
+    public class ApiActionsController : ControllerBase
     {
         private readonly IWebApplicationCrudService _wepAppCrudService;
 
-        public ApiActions(IWebApplicationCrudService wepAppCrudService)
+        public ApiActionsController(IWebApplicationCrudService wepAppCrudService)
         {
             _wepAppCrudService = wepAppCrudService;
         }
