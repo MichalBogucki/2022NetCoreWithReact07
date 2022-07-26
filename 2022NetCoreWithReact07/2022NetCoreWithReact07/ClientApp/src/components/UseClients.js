@@ -9,7 +9,7 @@ export class UseClients extends Component {
     }
 
     componentDidMount() {
-        this.populateClients();
+        this.getClients();
     }
 
     static renderClientsTable(clients) {
@@ -43,13 +43,27 @@ export class UseClients extends Component {
                 <h1 id="tabelLabel">Clients list</h1>
                 <p>This component demonstrates fetching Clients from Another API.</p>
                 {contents}
+                <br/>
+                <button className="btn btn-primary" onClick={() => this.addClients()}>Add Clients</button>
             </div>
         );
     }
 
-    async populateClients() {
+    async getClients() {
         const response = await fetch('api/apiactions');
         const data = await response.json();
         this.setState({ clients: data, loading: false });
+    }
+
+    async addClients() {
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                    "id": "button_id",
+                    "name": "button_name"
+                })
+        };
+        await fetch('api/apiactions', requestOptions);
     }
 }
