@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "01abfc1b-7f21-43f6-b636-98cfec7b45a7",
+		"name": "NasaApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2470755"
+	},
+	"item": [
+		{
+			"name": "LocalHost",
+			"item": [
+				{
+					"name": "Local_GetImagesByStartYear",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7179/api/Nasa?startYear=1999&mediaType=image",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7179",
+							"path": [
+								"api",
+								"Nasa"
+							],
+							"query": [
+								{
+									"key": "startYear",
+									"value": "1999"
+								},
+								{
+									"key": "mediaType",
+									"value": "image"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OfficialNasa",
+			"item": [
+				{
+					"name": "QueryWithApiKey",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.nasa.gov/planetary/apod?api_key=ObsIMmXVhlRgjul41TQizqt9Ua03P5tAN2oybrhE",
+							"protocol": "https",
+							"host": [
+								"api",
+								"nasa",
+								"gov"
+							],
+							"path": [
+								"planetary",
+								"apod"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "ObsIMmXVhlRgjul41TQizqt9Ua03P5tAN2oybrhE"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Official_GetImages_Stars",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://images-api.nasa.gov/search?q=stars&media_type=image",
+							"protocol": "http",
+							"host": [
+								"images-api",
+								"nasa",
+								"gov"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "stars"
+								},
+								{
+									"key": "media_type",
+									"value": "image"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Official_GetImages_StartYear",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://images-api.nasa.gov/search?year_start=1900&media_type=image",
+							"protocol": "http",
+							"host": [
+								"images-api",
+								"nasa",
+								"gov"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "year_start",
+									"value": "1900"
+								},
+								{
+									"key": "media_type",
+									"value": "image"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
