@@ -1,6 +1,7 @@
 
 using Microsoft.OpenApi.Models;
 using _2022NetCoreWithReact07.Controllers;
+using _2022NetCoreWithReact07.Services.Nasa;
 using _2022NetCoreWithReact07.Services.WebApplicationCrud;
 
 namespace _2022NetCoreWithReact07
@@ -9,7 +10,10 @@ namespace _2022NetCoreWithReact07
     {
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);      
+            var builder = WebApplication.CreateBuilder(args);
+
+            builder.Logging.ClearProviders();
+            builder.Logging.AddConsole();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
@@ -18,6 +22,7 @@ namespace _2022NetCoreWithReact07
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddHttpClient<IWebApplicationCrudService, WebAppCrudService>();
+            builder.Services.AddHttpClient<INasaAppService, NasaAppService>();
 
             var app = builder.Build();
 
