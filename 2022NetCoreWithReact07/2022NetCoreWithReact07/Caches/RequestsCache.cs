@@ -6,6 +6,7 @@ namespace _2022NetCoreWithReact07.Caches
 {
     public interface IRequestsCache
     {
+        public int GetKeyCount();
         public bool Contains(string key);
         public IEnumerable<MinimalImageData> GetValue(string key);
         public void AddValue(string key, IEnumerable<MinimalImageData> value);
@@ -31,5 +32,11 @@ namespace _2022NetCoreWithReact07.Caches
         {
             _requestsCache.TryAdd(key, value);
         }
+
+        public int GetKeyCount()
+        {
+            return _requestsCache.Keys.Count;
+        }
+
     }
 }
