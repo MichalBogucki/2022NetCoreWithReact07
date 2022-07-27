@@ -74,8 +74,7 @@ namespace _2022NetCoreWithReact07.Services.Nasa
             }
         }
 
-        private void BuildQueryParameters(string queryParameterName, string queryParameterValue,
-            StringBuilder requestUri)
+        private void BuildQueryParameters(string queryParameterName, string queryParameterValue, StringBuilder requestUri)
         {
             if (!string.IsNullOrEmpty(queryParameterValue))
             {

@@ -38,7 +38,7 @@ namespace _2022NetCoreWithReact07.Controllers
             catch (Exception e)
             {
                 _loggerHelper.LogError(e.Message, e.StackTrace);
-                return StatusCode((int)HttpStatusCode.InternalServerError);
+                return StatusCode((int)HttpStatusCode.InternalServerError, null);
             }
         }
         

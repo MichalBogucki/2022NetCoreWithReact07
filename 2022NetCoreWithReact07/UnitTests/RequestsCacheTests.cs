@@ -68,4 +68,5 @@ public class RequestsCacheTests
         Assert.Equal(value1, valueAfter);
         Assert.Equal(1, keyCount);
     }
+
 }
