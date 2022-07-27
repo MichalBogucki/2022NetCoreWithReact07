@@ -1,0 +1,9 @@
+﻿1) Display of images with text should be in grids. 3 Columns & 4 rows. 
+As mentioned in the Task, Pagination for all results could also be implemented (instead of hardcoded top12)
+Below the image only title should be displayed.
+Creation date, Description and all the details should be visible on hover over an image.
+
+2) More unit tests for each scenario of flows for NasaController, NasaAppService, RequestCache.
+
+*) Deletion of tabs not related to the task itself could be done (as counter or Clients), 
+nerertheless I kept them, so the website would look as more complete as well as to quicker rely on working pieces of code.
