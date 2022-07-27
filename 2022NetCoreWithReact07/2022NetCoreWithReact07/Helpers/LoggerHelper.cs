@@ -24,6 +24,15 @@ public class LoggerHelper<T>
         LogMessage(callerName, "Finished", additionalData);
     }
 
+    public void LogError(string message = "", string? stackTrace = "", [CallerMemberName] string callerName = "")
+    {
+        var logString = new StringBuilder($"{_className}.{callerName} ERROR");
+        logString.AppendLine(message);
+        logString.AppendLine(stackTrace);
+
+        _logger?.LogError($"\n{logString}\n");
+    }
+
     private void LogMessage(string callerName, string message, string additionalData)
     {
         var logString = new StringBuilder($"{_className}.{callerName} {message}");
@@ -33,4 +42,5 @@ public class LoggerHelper<T>
 
         _logger?.LogInformation($"\n{logString}\n");
     }
+    
 }

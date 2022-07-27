@@ -5,4 +5,11 @@ public class Item
     public string Href { get; set; }
     public List<Datum> Data { get; set; }
     public List<Link> Links { get; set; }
+
+    public MinimalImageData GetMinimalData()
+    {
+        var firstData = Data.FirstOrDefault();
+        var firstLink = Links.FirstOrDefault();
+        return new MinimalImageData(firstData?.Title, firstData?.Description, firstLink?.Href);
+    }
 }

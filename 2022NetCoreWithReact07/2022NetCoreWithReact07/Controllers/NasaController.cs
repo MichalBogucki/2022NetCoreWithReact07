@@ -24,13 +24,21 @@ namespace _2022NetCoreWithReact07.Controllers
         [HttpGet]
         public async Task<object> Get(string? query = null, string? startYear = null, string? endYear = null, string mediaType = "image")
         {
-            var queryInputs = new NasaQueryParameters(query, startYear, endYear, mediaType);
+            try
+            {
+                var queryInputs = new NasaQueryParameters(query, startYear, endYear, mediaType);
 
-            _loggerHelper.LogStart(queryInputs.ToString());
-            var result = await _nasaAppService.GetNasaImages(queryInputs);
+                _loggerHelper.LogStart(queryInputs.ToString());
+                var result = await _nasaAppService.GetNasaImages(queryInputs);
 
-            _loggerHelper.LogFinish(queryInputs.ToString());
-            return StatusCode((int)HttpStatusCode.OK, result);
+                _loggerHelper.LogFinish(queryInputs.ToString());
+                return StatusCode((int)HttpStatusCode.OK, result);
+            }
+            catch (Exception e)
+            {
+                _loggerHelper.LogError(e.Message, e.StackTrace);
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+            }
         }
         
     }

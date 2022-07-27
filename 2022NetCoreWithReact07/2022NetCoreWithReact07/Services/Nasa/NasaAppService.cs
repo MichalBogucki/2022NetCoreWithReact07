@@ -8,7 +8,7 @@ namespace _2022NetCoreWithReact07.Services.Nasa
 {
     public interface INasaAppService
     {
-        public Task<NasaImagesDto> GetNasaImages(NasaQueryParameters nasaQueryParameters);
+        public Task<IEnumerable<MinimalImageData>> GetNasaImages(NasaQueryParameters nasaQueryParameters);
     }
 
     public class NasaAppService : INasaAppService
@@ -26,21 +26,29 @@ namespace _2022NetCoreWithReact07.Services.Nasa
             _loggerHelper = new LoggerHelper<NasaAppService>(logger, GetType().Name);
         }
 
-        public async Task<NasaImagesDto> GetNasaImages(NasaQueryParameters nasaQueryParameters)
+        public async Task<IEnumerable<MinimalImageData>> GetNasaImages(NasaQueryParameters nasaQueryParameters)
         {
-            _loggerHelper.LogStart();
+            try
+            {
+                _loggerHelper.LogStart();
 
-            var requestUri = new StringBuilder("search?");
-            BuildQueryParameters("q", nasaQueryParameters.Query, requestUri);
-            BuildQueryParameters("year_start", nasaQueryParameters.StartYear, requestUri);
-            BuildQueryParameters("year_end", nasaQueryParameters.EndYear, requestUri);
-            BuildQueryParameters("media_type", nasaQueryParameters.MediaType, requestUri);
+                var requestUri = new StringBuilder("search?");
+                BuildQueryParameters("q", nasaQueryParameters.Query, requestUri);
+                BuildQueryParameters("year_start", nasaQueryParameters.StartYear, requestUri);
+                BuildQueryParameters("year_end", nasaQueryParameters.EndYear, requestUri);
+                BuildQueryParameters("media_type", nasaQueryParameters.MediaType, requestUri);
 
-            var nasaImagesDto = await GetAsync<NasaImagesDto>(requestUri.ToString());
+                var nasaImagesDto = await GetAsync<NasaImagesDto>(requestUri.ToString());
+                var topTenImages = nasaImagesDto!.Collection.Items.Take(10).Select(img => img.GetMinimalData());
 
-            _loggerHelper.LogFinish();
-
-            return nasaImagesDto!;
+                _loggerHelper.LogFinish();
+                return topTenImages!;
+            }
+            catch (Exception ex)
+            {
+                _loggerHelper.LogError(ex.Message, ex.StackTrace);
+                throw;
+            }
         }
 
         private void BuildQueryParameters(string queryParameterName, string queryParameterValue,
