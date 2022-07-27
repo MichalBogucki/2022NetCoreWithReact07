@@ -1,4 +1,5 @@
 
+using _2022NetCoreWithReact07.Caches;
 using Microsoft.OpenApi.Models;
 using _2022NetCoreWithReact07.Controllers;
 using _2022NetCoreWithReact07.Helpers;
@@ -25,6 +26,7 @@ namespace _2022NetCoreWithReact07
             builder.Services.AddHttpClient<IWebApplicationCrudService, WebAppCrudService>();
             builder.Services.AddHttpClient<INasaAppService, NasaAppService>();
             builder.Services.AddTransient<IConfigProvider, ConfigProvider>();
+            builder.Services.AddSingleton<IRequestsCache, RequestsCache>();
 
             var app = builder.Build();
 

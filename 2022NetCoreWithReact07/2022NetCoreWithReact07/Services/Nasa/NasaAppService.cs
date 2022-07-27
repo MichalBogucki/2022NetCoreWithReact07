@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System.Collections.Concurrent;
+using System.Text;
+using _2022NetCoreWithReact07.Caches;
 using _2022NetCoreWithReact07.DTOs.NasaImages.Input;
 using _2022NetCoreWithReact07.DTOs.NasaImages.Output;
 using _2022NetCoreWithReact07.Helpers;
@@ -16,17 +18,19 @@ namespace _2022NetCoreWithReact07.Services.Nasa
         private readonly IConfigProvider _configProvider;
         private readonly LoggerHelper<NasaAppService> _loggerHelper;
         private readonly HttpClient _httpClient;
+        public readonly IRequestsCache _requestsCache;
         private readonly string _nasaImageApiBaseUrl;
 
         private bool _useAmpersand = false;
 
-        public NasaAppService(HttpClient httpClient, IConfigProvider configProvider, ILogger<NasaAppService> logger)
-        {
+        public NasaAppService(HttpClient httpClient, IConfigProvider configProvider, ILogger<NasaAppService> logger, IRequestsCache requestsCache)
+        {;
             _configProvider = configProvider;
             _nasaImageApiBaseUrl = _configProvider.GetNasaBaseUrl();
             _httpClient = httpClient;
             _httpClient.BaseAddress = new Uri(_nasaImageApiBaseUrl);
             _loggerHelper = new LoggerHelper<NasaAppService>(logger, GetType().Name);
+            _requestsCache = requestsCache;
         }
 
         public async Task<IEnumerable<MinimalImageData>> GetNasaImages(NasaQueryParameters nasaQueryParameters)
@@ -34,6 +38,11 @@ namespace _2022NetCoreWithReact07.Services.Nasa
             try
             {
                 _loggerHelper.LogStart();
+                var queryString = nasaQueryParameters.ToString();
+                if (_requestsCache.Contains(queryString))
+                {
+                    return _requestsCache.GetValue(queryString);
+                }
 
                 var requestUri = new StringBuilder("search?");
                 BuildQueryParameters("q", nasaQueryParameters.Query, requestUri);
@@ -43,6 +52,8 @@ namespace _2022NetCoreWithReact07.Services.Nasa
 
                 var nasaImagesDto = await GetAsync<NasaImagesDto>(requestUri.ToString());
                 var topTenImages = nasaImagesDto!.Collection.Items.Take(12).Select(img => img.GetMinimalData());
+
+                _requestsCache.AddValue(queryString, topTenImages);
 
                 _loggerHelper.LogFinish();
                 return topTenImages!;

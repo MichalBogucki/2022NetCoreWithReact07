@@ -80,6 +80,29 @@ namespace UnitTests
             //assert
             Assert.True(results.Any());
             Assert.Equal("a",results.Single().Href);
+        }        
+        
+        [Fact]
+        public async Task CompareMinimalImageDto_ShouldEqual()
+        {
+            //arrange
+            var dateTimeNow = DateTime.Now;
+            var imageA = new MinimalImageData()
+            {
+                Description = "d",
+                DateCreated = dateTimeNow
+            };
+            var imageB = new MinimalImageData()
+            {
+                Description = "d",
+                DateCreated = dateTimeNow
+            };
+
+            //act
+            var equal = imageB.Equals(imageB);
+
+            //assert
+            Assert.True(equal);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using _2022NetCoreWithReact07.DTOs.NasaImages.Input;
+using _2022NetCoreWithReact07.DTOs.NasaImages.Output;
 using _2022NetCoreWithReact07.Helpers;
 using _2022NetCoreWithReact07.Services.Nasa;
 using Microsoft.AspNetCore.Mvc;
@@ -14,7 +15,7 @@ namespace _2022NetCoreWithReact07.Controllers
     {
         private readonly LoggerHelper<NasaController> _loggerHelper;
         private readonly INasaAppService _nasaAppService;
-
+        
         public NasaController(INasaAppService nasaAppService, ILogger<NasaController> logger)
         {
             _nasaAppService = nasaAppService;
@@ -42,4 +43,5 @@ namespace _2022NetCoreWithReact07.Controllers
         }
         
     }
+    
 }
