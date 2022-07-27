@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using _2022NetCoreWithReact07.Caches;
 using _2022NetCoreWithReact07.DTOs.NasaImages.Input;
 using _2022NetCoreWithReact07.DTOs.NasaImages.Output;
 using _2022NetCoreWithReact07.Helpers;
@@ -35,7 +36,7 @@ namespace UnitTests
             _httpClientMock = new HttpClient(mockHttpMessageHandler.Object);
             _configProviderMock.Setup(x => x.GetNasaBaseUrl()).Returns("http://xyz");
             
-            nasaAppService = new NasaAppService(_httpClientMock, _configProviderMock.Object, _loggerMock.Object);
+            nasaAppService = new NasaAppService(_httpClientMock, _configProviderMock.Object, _loggerMock.Object, new RequestsCache());
         }
 
         private static string SerializeNasaDto()
