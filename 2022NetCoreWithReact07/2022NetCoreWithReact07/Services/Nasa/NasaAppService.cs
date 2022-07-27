@@ -13,14 +13,17 @@ namespace _2022NetCoreWithReact07.Services.Nasa
 
     public class NasaAppService : INasaAppService
     {
+        private readonly IConfigProvider _configProvider;
         private readonly LoggerHelper<NasaAppService> _loggerHelper;
-        private readonly string _nasaImageApiBaseUrl;
         private readonly HttpClient _httpClient;
+        private readonly string _nasaImageApiBaseUrl;
+
         private bool _useAmpersand = false;
 
-        public NasaAppService(HttpClient httpClient, IConfiguration config, ILogger<NasaAppService> logger)
+        public NasaAppService(HttpClient httpClient, IConfigProvider configProvider, ILogger<NasaAppService> logger)
         {
-            _nasaImageApiBaseUrl = config.GetValue<string>("NasaImageApiBaseUrl");
+            _configProvider = configProvider;
+            _nasaImageApiBaseUrl = _configProvider.GetNasaBaseUrl();
             _httpClient = httpClient;
             _httpClient.BaseAddress = new Uri(_nasaImageApiBaseUrl);
             _loggerHelper = new LoggerHelper<NasaAppService>(logger, GetType().Name);

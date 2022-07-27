@@ -17,7 +17,7 @@ export class UseNasa extends Component {
     componentDidUpdate() {
         this.getNasaImages();
     }
-
+    
     static renderNasaTable(nasaImages) {
         return (
             <table className='table table-striped' aria-labelledby="tabelLabel">

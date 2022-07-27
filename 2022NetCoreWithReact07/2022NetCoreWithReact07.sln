@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2022NetCoreWithReact07", "2022NetCoreWithReact07\2022NetCoreWithReact07.csproj", "{71068882-4907-4DC3-B5A9-6116799C685D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2022NetCoreWithReact07", "2022NetCoreWithReact07\2022NetCoreWithReact07.csproj", "{71068882-4907-4DC3-B5A9-6116799C685D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{B77810B2-74AB-4C48-8B8A-DE644802E1BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{71068882-4907-4DC3-B5A9-6116799C685D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71068882-4907-4DC3-B5A9-6116799C685D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71068882-4907-4DC3-B5A9-6116799C685D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B77810B2-74AB-4C48-8B8A-DE644802E1BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B77810B2-74AB-4C48-8B8A-DE644802E1BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B77810B2-74AB-4C48-8B8A-DE644802E1BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B77810B2-74AB-4C48-8B8A-DE644802E1BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

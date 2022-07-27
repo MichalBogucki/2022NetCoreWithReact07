@@ -1,6 +1,7 @@
 
 using Microsoft.OpenApi.Models;
 using _2022NetCoreWithReact07.Controllers;
+using _2022NetCoreWithReact07.Helpers;
 using _2022NetCoreWithReact07.Services.Nasa;
 using _2022NetCoreWithReact07.Services.WebApplicationCrud;
 
@@ -23,6 +24,7 @@ namespace _2022NetCoreWithReact07
             builder.Services.AddSwaggerGen();
             builder.Services.AddHttpClient<IWebApplicationCrudService, WebAppCrudService>();
             builder.Services.AddHttpClient<INasaAppService, NasaAppService>();
+            builder.Services.AddTransient<IConfigProvider, ConfigProvider>();
 
             var app = builder.Build();
 
