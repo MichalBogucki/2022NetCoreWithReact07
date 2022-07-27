@@ -2,14 +2,8 @@
 
 public class MinimalImageData
 {
-    public string? Title { get; }
-    public string? Description { get; }
-    public string? Href { get; }
-
-    public MinimalImageData(string? title, string? description, string? href)
-    {
-        Title = title;
-        Description = description;
-        Href = href;
-    }
+    public string? Title { get; set; }
+    public string? Description { get; set; }
+    public DateTime? DateCreated { get; set; }
+    public string? Href { get; set; }
 }

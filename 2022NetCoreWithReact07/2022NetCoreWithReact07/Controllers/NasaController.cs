@@ -22,7 +22,7 @@ namespace _2022NetCoreWithReact07.Controllers
         }
         
         [HttpGet]
-        public async Task<object> Get(string? query = null, string? startYear = null, string? endYear = null, string mediaType = "image")
+        public async Task<object> Get(string? query = null, string? startYear = "1990", string? endYear = null, string mediaType = "image")
         {
             try
             {

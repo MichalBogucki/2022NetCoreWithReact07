@@ -2,7 +2,7 @@
 
 public class Item
 {
-    public string Href { get; set; }
+    public string? Href { get; set; }
     public List<Datum> Data { get; set; }
     public List<Link> Links { get; set; }
 
@@ -10,6 +10,13 @@ public class Item
     {
         var firstData = Data.FirstOrDefault();
         var firstLink = Links.FirstOrDefault();
-        return new MinimalImageData(firstData?.Title, firstData?.Description, firstLink?.Href);
+
+        return new MinimalImageData()
+        {
+            Title = firstData?.Title,
+            Description = firstData?.Description,
+            DateCreated = firstData?.DateCreated, 
+            Href = firstLink?.Href
+        };
     }
 }
