@@ -1,6 +1,7 @@
 import { Counter } from "./components/Counter";
 import { FetchData } from "./components/FetchData";
 import { UseClients } from "./components/UseClients";
+import { UseNasa} from "./components/UseNasa";
 import { Home } from "./components/Home";
 
 const AppRoutes = [
@@ -19,6 +20,10 @@ const AppRoutes = [
   {
     path: '/use-clients',
     element: <UseClients />
+  },
+  {
+    path: '/use-nasa',
+    element: <UseNasa />
   }
 ];
 
