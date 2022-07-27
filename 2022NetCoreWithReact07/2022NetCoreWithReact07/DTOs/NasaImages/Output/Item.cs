@@ -10,13 +10,13 @@ public class Item
     {
         var firstData = Data.FirstOrDefault();
         var firstLink = Links.FirstOrDefault();
-
+        
         return new MinimalImageData()
-        {
-            Title = firstData?.Title,
-            Description = firstData?.Description,
-            DateCreated = firstData?.DateCreated, 
-            Href = firstLink?.Href
-        };
+            {
+                Title = firstData?.Title,
+                Description = firstData?.Description,
+                DateCreated = firstData?.DateCreated,
+                Href = firstLink?.Href
+            };
     }
 }

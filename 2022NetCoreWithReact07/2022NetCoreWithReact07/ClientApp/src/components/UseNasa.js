@@ -36,7 +36,7 @@ export class UseNasa extends Component {
                             <td>{image.description}</td>
                             <td>{image.dateCreated}</td>
                             <Link to="{image.href}">
-                                <img src={image.href} alt='Logo' />
+                                <img src={image.href} width={250} height={250} alt={image.title} />
                             </Link>
                         </tr>
                     )}
