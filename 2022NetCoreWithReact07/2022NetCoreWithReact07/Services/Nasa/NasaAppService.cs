@@ -39,7 +39,7 @@ namespace _2022NetCoreWithReact07.Services.Nasa
                 BuildQueryParameters("media_type", nasaQueryParameters.MediaType, requestUri);
 
                 var nasaImagesDto = await GetAsync<NasaImagesDto>(requestUri.ToString());
-                var topTenImages = nasaImagesDto!.Collection.Items.Take(10).Select(img => img.GetMinimalData());
+                var topTenImages = nasaImagesDto!.Collection.Items.Take(12).Select(img => img.GetMinimalData());
 
                 _loggerHelper.LogFinish();
                 return topTenImages!;
