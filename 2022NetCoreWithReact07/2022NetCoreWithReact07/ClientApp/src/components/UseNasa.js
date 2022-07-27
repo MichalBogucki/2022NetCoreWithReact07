@@ -15,7 +15,7 @@ export class UseNasa extends Component {
 
     }
     componentDidUpdate() {
-        this.getNasaImages();
+        //this.getNasaImages();
     }
     
     static renderNasaTable(nasaImages) {
@@ -54,9 +54,10 @@ export class UseNasa extends Component {
             <div>
                 <h1 id="tabelLabel">Nasa list</h1>
                 <p>This component demonstrates fetching Nasa from Another API.</p>
+                <br />
+                <button className="btn btn-primary" onClick={() => this.getNasaImages()}>Get Nasa Images </button>
+                <br />
                 {contents}
-                <br/>
-                <button className="btn btn-primary" onClick={() => this.addNasa()}>Add Nasa</button>
             </div>
         );
     }
