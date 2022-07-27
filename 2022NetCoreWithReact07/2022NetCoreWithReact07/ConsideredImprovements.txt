@@ -5,5 +5,7 @@ Creation date, Description and all the details should be visible on hover over a
 
 2) More unit tests for each scenario of flows for NasaController, NasaAppService, RequestCache.
 
+3) Logger should be added to the Cache, to trace it's usage
+
 *) Deletion of tabs not related to the task itself could be done (as counter or Clients), 
 nerertheless I kept them, so the website would look as more complete as well as to quicker rely on working pieces of code.
